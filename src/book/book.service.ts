@@ -68,7 +68,8 @@ export class BookService {
     });
   }
 
-  async deleteById(id: string): Promise<Book> {
-    return await this.bookModel.findByIdAndDelete(id);
+  async deleteById(id: string): Promise<{ deleted: boolean }> {
+    await this.bookModel.findByIdAndDelete(id);
+    return { deleted: true };
   }
 }
